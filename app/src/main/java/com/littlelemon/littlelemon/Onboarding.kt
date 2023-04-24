@@ -62,12 +62,12 @@ fun OnBoarding(navController: NavHostController) {
             modifier = Modifier
                 .background(LittleLemonColor.green)
                 .fillMaxWidth()
-                .padding(28.dp),
+                .padding(24.dp),
         )
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(horizontal = 28.dp)
+            modifier = Modifier.padding(horizontal = 24.dp)
         ) {
             OutlinedTextField(
                 value = firstName,
