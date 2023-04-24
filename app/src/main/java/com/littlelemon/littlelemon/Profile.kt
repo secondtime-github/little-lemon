@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -116,7 +115,7 @@ fun Profile(navController: NavHostController) {
                     .fillMaxWidth()
                     .padding(top = 20.dp)
             )
-            Spacer(modifier = Modifier.height(200.dp))
+            Spacer(modifier = Modifier.weight(1f))
             Button(
                 onClick = {
                     sharedPreferences.edit(commit = true) {
@@ -128,7 +127,8 @@ fun Profile(navController: NavHostController) {
                 },
                 colors = ButtonDefaults.buttonColors( LittleLemonColor.yellow ),
                 shape = RoundedCornerShape(8.dp),
-                border = BorderStroke(1.dp, LittleLemonColor.red)
+                border = BorderStroke(1.dp, LittleLemonColor.red),
+                modifier = Modifier.padding(bottom = 24.dp)
             ) {
                 Text(
                     text = "Log out",

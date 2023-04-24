@@ -8,7 +8,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -26,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -64,6 +64,15 @@ fun OnBoarding(navController: NavHostController) {
                 .fillMaxWidth()
                 .padding(24.dp),
         )
+        Text(
+            text = "Profile information",
+            fontSize = 18.sp,
+            color = LittleLemonColor.charcoal,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp),
+        )
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -93,7 +102,7 @@ fun OnBoarding(navController: NavHostController) {
                     .fillMaxWidth()
                     .padding(top = 20.dp)
             )
-            Spacer(modifier = Modifier.height(200.dp))
+            Spacer(modifier = Modifier.weight(1f))
             Button(
                 onClick = {
                     if (firstName.isBlank() || lastName.isBlank() || email.isBlank()) {
@@ -112,7 +121,8 @@ fun OnBoarding(navController: NavHostController) {
                 },
                 colors = ButtonDefaults.buttonColors( LittleLemonColor.yellow ),
                 shape = RoundedCornerShape(8.dp),
-                border = BorderStroke(1.dp, LittleLemonColor.red)
+                border = BorderStroke(1.dp, LittleLemonColor.red),
+                modifier = Modifier.padding(bottom = 24.dp)
             ) {
                 Text(
                     text = "Register",
