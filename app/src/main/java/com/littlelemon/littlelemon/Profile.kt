@@ -1,18 +1,27 @@
 package com.littlelemon.littlelemon
 
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +39,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.littlelemon.littlelemon.ui.theme.LittleLemonColor
 
+@RequiresApi(Build.VERSION_CODES.M)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Profile(navController: NavHostController) {
@@ -44,11 +54,27 @@ fun Profile(navController: NavHostController) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.logo),
-            contentDescription = "Little lemon Logo",
-            modifier = Modifier.size(200.dp, 100.dp)
-        )
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+        ) {
+            IconButton(
+                onClick = { navController.popBackStack() },
+                modifier = Modifier.size(50.dp),
+            ) {
+                Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+            }
+            Image(
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = "Little lemon Logo",
+                modifier = Modifier.size(200.dp, 100.dp)
+            )
+            Box(modifier = Modifier.size(50.dp)) { }
+        }
+
         Text(
             text = "Profile information",
             fontSize = 18.sp,
@@ -56,12 +82,12 @@ fun Profile(navController: NavHostController) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(28.dp),
+                .padding(24.dp),
         )
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(horizontal = 28.dp)
+            modifier = Modifier.padding(horizontal = 24.dp)
         ) {
             OutlinedTextField(
                 value = firstName,
@@ -116,6 +142,7 @@ fun Profile(navController: NavHostController) {
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.M)
 @Preview(showBackground = true)
 @Composable
 fun ProfilePreview() {
